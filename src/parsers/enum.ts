@@ -1,11 +1,11 @@
-import { ZodEnumDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 
 export type JsonSchema7EnumType = {
   type: "string";
   enum: string[];
 };
 
-export function parseEnumDef(def: ZodEnumDef): JsonSchema7EnumType {
+export function parseEnumDef(def: z.ZodEnumDef): JsonSchema7EnumType {
   return {
     type: "string",
     enum: def.values,

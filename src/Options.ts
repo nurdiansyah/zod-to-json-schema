@@ -1,4 +1,4 @@
-import { ZodSchema } from "zod";
+import { z } from "@deboxsoft/module-core";
 
 export type Options<Target extends "jsonSchema7" | "openApi3" = "jsonSchema7"> =
   {
@@ -9,7 +9,7 @@ export type Options<Target extends "jsonSchema7" | "openApi3" = "jsonSchema7"> =
     target: Target;
     strictUnions: boolean;
     definitionPath: string;
-    definitions: Record<string, ZodSchema>;
+    definitions: Record<string, z.ZodSchema>;
     errorMessages: boolean;
   };
 

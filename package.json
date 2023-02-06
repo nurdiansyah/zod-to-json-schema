@@ -1,5 +1,5 @@
 {
-  "name": "zod-to-json-schema",
+  "name": "@deboxsoft/zod-to-json-schema",
   "version": "3.20.2",
   "description": "Converts Zod schemas to Json Schemas",
   "main": "index.js",
@@ -33,9 +33,11 @@
   },
   "license": "ISC",
   "peerDependencies": {
+    "@deboxsoft/module-core": "^2.6.60",
     "zod": "^3.20.0"
   },
   "devDependencies": {
+    "@deboxsoft/module-core": "^2.6.60",
     "@types/jest": "^26.0.24",
     "@types/json-schema": "^7.0.9",
     "ajv": "^8.6.3",

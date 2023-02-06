@@ -1,4 +1,4 @@
-import { ZodSetDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { ErrorMessages, setResponseValueAndErrors } from "../errorMessages";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
@@ -11,7 +11,7 @@ export type JsonSchema7SetType = {
   errorMessage?: ErrorMessages<JsonSchema7SetType>;
 };
 
-export function parseSetDef(def: ZodSetDef, refs: Refs): JsonSchema7SetType {
+export function parseSetDef(def: z.ZodSetDef, refs: Refs): JsonSchema7SetType {
   const items = parseDef(def.valueType._def, {
     ...refs,
     currentPath: [...refs.currentPath, "items"],

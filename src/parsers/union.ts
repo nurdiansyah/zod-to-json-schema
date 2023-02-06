@@ -1,9 +1,4 @@
-import {
-  ZodDiscriminatedUnionDef,
-  ZodLiteralDef,
-  ZodTypeAny,
-  ZodUnionDef,
-} from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
@@ -36,12 +31,12 @@ type JsonSchema7AnyOfType = {
 };
 
 export function parseUnionDef(
-  def: ZodUnionDef | ZodDiscriminatedUnionDef<any, any>,
+  def: z.ZodUnionDef | z.ZodDiscriminatedUnionDef<any, any>,
   refs: Refs
 ): JsonSchema7PrimitiveUnionType | JsonSchema7AnyOfType | undefined {
   if (refs.target === "openApi3") return asAnyOf(def, refs);
 
-  const options: readonly ZodTypeAny[] =
+  const options: readonly z.ZodTypeAny[] =
     def.options instanceof Map ? Array.from(def.options.values()) : def.options;
 
   // This blocks tries to look ahead a bit to produce nicer looking schemas with type array instead of anyOf.
@@ -66,7 +61,7 @@ export function parseUnionDef(
     // all options literals
 
     const types = options.reduce(
-      (acc: JsonSchema7Primitive[], x: { _def: ZodLiteralDef }) => {
+      (acc: JsonSchema7Primitive[], x: { _def: z.ZodLiteralDef }) => {
         const type = typeof x._def.value;
         switch (type) {
           case "string":
@@ -115,7 +110,7 @@ export function parseUnionDef(
 }
 
 const asAnyOf = (
-  def: ZodUnionDef | ZodDiscriminatedUnionDef<any, any>,
+  def: z.ZodUnionDef | z.ZodDiscriminatedUnionDef<any, any>,
   refs: Refs
 ): JsonSchema7PrimitiveUnionType | JsonSchema7AnyOfType | undefined => {
   const anyOf = ((

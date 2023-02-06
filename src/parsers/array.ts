@@ -1,4 +1,4 @@
-import { ZodArrayDef, ZodFirstPartyTypeKind } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { ErrorMessages, setResponseValueAndErrors } from "../errorMessages";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
@@ -11,11 +11,11 @@ export type JsonSchema7ArrayType = {
   errorMessages?: ErrorMessages<JsonSchema7ArrayType, "items">;
 };
 
-export function parseArrayDef(def: ZodArrayDef, refs: Refs) {
+export function parseArrayDef(def: z.ZodArrayDef, refs: Refs) {
   const res: JsonSchema7ArrayType = {
     type: "array",
   };
-  if (def.type?._def?.typeName !== ZodFirstPartyTypeKind.ZodAny) {
+  if (def.type?._def?.typeName !== z.ZodFirstPartyTypeKind.ZodAny) {
     res.items = parseDef(def.type._def, {
       ...refs,
       currentPath: [...refs.currentPath, "items"],

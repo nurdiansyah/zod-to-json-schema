@@ -1,10 +1,10 @@
-import { ZodPipelineDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 import { JsonSchema7AllOfType } from "./intersection";
 
 export const parsePipelineDef = (
-  def: ZodPipelineDef<any, any>,
+  def: z.ZodPipelineDef<any, any>,
   refs: Refs
 ): JsonSchema7AllOfType | JsonSchema7Type | undefined => {
   const a = parseDef(def.in._def, {

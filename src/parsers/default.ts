@@ -1,9 +1,9 @@
-import { ZodDefaultDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
 export function parseDefaultDef(
-  _def: ZodDefaultDef,
+  _def: z.ZodDefaultDef,
   refs: Refs
 ): JsonSchema7Type & { default: any } {
   return {

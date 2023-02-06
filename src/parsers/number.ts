@@ -1,4 +1,4 @@
-import { ZodNumberDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import {
   addErrorMessage,
   ErrorMessages,
@@ -17,7 +17,7 @@ export type JsonSchema7NumberType = {
 };
 
 export function parseNumberDef(
-  def: ZodNumberDef,
+  def: z.ZodNumberDef,
   refs: Refs
 ): JsonSchema7NumberType {
   const res: JsonSchema7NumberType = {

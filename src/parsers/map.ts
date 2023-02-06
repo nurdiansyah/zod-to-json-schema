@@ -1,4 +1,4 @@
-import { ZodMapDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
@@ -13,7 +13,7 @@ export type JsonSchema7MapType = {
   };
 };
 
-export function parseMapDef(def: ZodMapDef, refs: Refs): JsonSchema7MapType {
+export function parseMapDef(def: z.ZodMapDef, refs: Refs): JsonSchema7MapType {
   const keys =
     parseDef(def.keyType._def, {
       ...refs,

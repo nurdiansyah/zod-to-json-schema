@@ -1,9 +1,9 @@
-import { ZodOptionalDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
 export const parseOptionalDef = (
-  def: ZodOptionalDef,
+  def: z.ZodOptionalDef,
   refs: Refs
 ): JsonSchema7Type | undefined => {
   if (refs.currentPath.toString() === refs.propertyPath?.toString()) {

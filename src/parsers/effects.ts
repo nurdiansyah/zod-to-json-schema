@@ -1,9 +1,9 @@
-import { ZodEffectsDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
 export function parseEffectsDef(
-  _def: ZodEffectsDef,
+  _def: z.ZodEffectsDef,
   refs: Refs
 ): JsonSchema7Type | undefined {
   return refs.effectStrategy === "input"

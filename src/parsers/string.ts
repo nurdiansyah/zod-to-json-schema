@@ -1,4 +1,4 @@
-import { ZodStringDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { ErrorMessages, setResponseValueAndErrors } from "../errorMessages";
 import { Refs } from "../Refs";
 
@@ -16,7 +16,7 @@ export type JsonSchema7StringType = {
 };
 
 export function parseStringDef(
-  def: ZodStringDef,
+  def: z.ZodStringDef,
   refs: Refs
 ): JsonSchema7StringType {
   const res: JsonSchema7StringType = {

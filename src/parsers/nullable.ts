@@ -1,4 +1,4 @@
-import { ZodNullableDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 import { JsonSchema7NullType } from "./null";
@@ -13,7 +13,7 @@ export type JsonSchema7NullableType =
     };
 
 export function parseNullableDef(
-  def: ZodNullableDef,
+  def: z.ZodNullableDef,
   refs: Refs
 ): JsonSchema7NullableType | undefined {
   if (

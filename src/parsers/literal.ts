@@ -1,4 +1,4 @@
-import { ZodLiteralDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { Refs } from "../Refs";
 
 export type JsonSchema7LiteralType =
@@ -11,7 +11,7 @@ export type JsonSchema7LiteralType =
     };
 
 export function parseLiteralDef(
-  def: ZodLiteralDef,
+  def: z.ZodLiteralDef,
   refs: Refs
 ): JsonSchema7LiteralType {
   const parsedType = typeof def.value;

@@ -1,4 +1,4 @@
-import { ZodObjectDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
@@ -9,7 +9,7 @@ export type JsonSchema7ObjectType = {
   required?: string[];
 };
 
-export function parseObjectDef(def: ZodObjectDef, refs: Refs) {
+export function parseObjectDef(def: z.ZodObjectDef, refs: Refs) {
   const result: JsonSchema7ObjectType = {
     type: "object",
     ...Object.entries(def.shape()).reduce(

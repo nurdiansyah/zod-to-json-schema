@@ -1,4 +1,4 @@
-import { ZodNativeEnumDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 
 export type JsonSchema7NativeEnumType = {
   type: "string" | "number" | ["string", "number"];
@@ -6,7 +6,7 @@ export type JsonSchema7NativeEnumType = {
 };
 
 export function parseNativeEnumDef(
-  def: ZodNativeEnumDef
+  def: z.ZodNativeEnumDef
 ): JsonSchema7NativeEnumType {
   const object = def.values;
   const actualKeys = Object.keys(def.values).filter((key: string) => {

@@ -1,4 +1,4 @@
-import { ZodTypeDef } from "zod";
+import { ZodTypeDef } from "@deboxsoft/module-core";
 import { getDefaultOptions, Options } from "./Options";
 import { JsonSchema7Type } from "./parseDef";
 

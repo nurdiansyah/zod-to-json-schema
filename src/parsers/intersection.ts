@@ -1,4 +1,4 @@
-import { ZodIntersectionDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
@@ -7,7 +7,7 @@ export type JsonSchema7AllOfType = {
 };
 
 export function parseIntersectionDef(
-  def: ZodIntersectionDef,
+  def: z.ZodIntersectionDef,
   refs: Refs
 ): JsonSchema7AllOfType | JsonSchema7Type | undefined {
   const allOf = [

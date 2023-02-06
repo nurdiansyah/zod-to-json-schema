@@ -1,4 +1,4 @@
-import { ZodTupleDef, ZodTupleItems, ZodTypeAny } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
@@ -16,7 +16,7 @@ export type JsonSchema7TupleType = {
 );
 
 export function parseTupleDef(
-  def: ZodTupleDef<ZodTupleItems | [], ZodTypeAny | null>,
+  def: z.ZodTupleDef<z.ZodTupleItems | [], z.ZodTypeAny | null>,
   refs: Refs
 ): JsonSchema7TupleType {
   if (def.rest) {

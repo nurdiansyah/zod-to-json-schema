@@ -1,5 +1,5 @@
 import { JSONSchema7Type } from "json-schema";
-import { ZodSchema } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { Options } from "./Options";
 import { JsonSchema7Type, parseDef } from "./parseDef";
 import { getRefs } from "./Refs";
@@ -7,7 +7,7 @@ import { getRefs } from "./Refs";
 const zodToJsonSchema = <
   Target extends "jsonSchema7" | "openApi3" = "jsonSchema7"
 >(
-  schema: ZodSchema<any>,
+  schema: z.ZodSchema<any>,
   options?: Partial<Options<Target>> | string
 ): (Target extends "jsonSchema7" ? JsonSchema7Type : object) & {
   $schema?: string;

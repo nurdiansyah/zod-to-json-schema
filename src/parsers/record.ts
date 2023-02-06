@@ -1,4 +1,4 @@
-import { ZodFirstPartyTypeKind, ZodRecordDef, ZodTypeAny } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 import { JsonSchema7EnumType } from "./enum";
@@ -15,7 +15,7 @@ export type JsonSchema7RecordType = {
 };
 
 export function parseRecordDef(
-  def: ZodRecordDef<ZodTypeAny, ZodTypeAny>,
+  def: z.ZodRecordDef<z.ZodTypeAny, z.ZodTypeAny>,
   refs: Refs
 ): JsonSchema7RecordType {
   const schema: JsonSchema7RecordType = {
@@ -28,7 +28,7 @@ export function parseRecordDef(
   };
 
   if (
-    def.keyType?._def.typeName === ZodFirstPartyTypeKind.ZodString &&
+    def.keyType?._def.typeName === z.ZodFirstPartyTypeKind.ZodString &&
     def.keyType._def.checks?.length
   ) {
     const keyType: JsonSchema7RecordPropertyNamesType = Object.entries(
@@ -42,7 +42,7 @@ export function parseRecordDef(
       ...schema,
       propertyNames: keyType,
     };
-  } else if (def.keyType?._def.typeName === ZodFirstPartyTypeKind.ZodEnum) {
+  } else if (def.keyType?._def.typeName === z.ZodFirstPartyTypeKind.ZodEnum) {
     return {
       ...schema,
       propertyNames: {

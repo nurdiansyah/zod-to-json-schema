@@ -1,9 +1,9 @@
-import { ZodPromiseDef } from "zod";
+import { z } from "@deboxsoft/module-core";
 import { JsonSchema7Type, parseDef } from "../parseDef";
 import { Refs } from "../Refs";
 
 export function parsePromiseDef(
-  def: ZodPromiseDef,
+  def: z.ZodPromiseDef,
   refs: Refs
 ): JsonSchema7Type | undefined {
   return parseDef(def.type._def, refs);
