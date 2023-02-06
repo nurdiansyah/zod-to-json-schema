@@ -33,8 +33,7 @@
   },
   "license": "ISC",
   "peerDependencies": {
-    "@deboxsoft/module-core": "^2.6.60",
-    "zod": "^3.20.0"
+    "@deboxsoft/module-core": "^2.6.60"
   },
   "devDependencies": {
     "@deboxsoft/module-core": "^2.6.60",
@@ -46,8 +45,7 @@
     "json-schema-deref-sync": "^0.14.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.2",
-    "typescript": "^4.9.4",
-    "zod": "^3.20.2"
+    "typescript": "^4.9.4"
   },
   "types": "index.d.ts"
 }
