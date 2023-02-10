@@ -2,11 +2,15 @@
   "name": "@deboxsoft/zod-to-json-schema",
   "version": "3.20.4",
   "description": "Converts Zod schemas to Json Schemas",
-  "main": "index.js",
+  "main": "./libs/index.js",
+  "type": "module",
+  "types": "libs/index.d.ts",
+  "exports": {
+    ".": "./libs/index.js"
+  },
   "scripts": {
     "test": "vitest",
-    "build": "npm i && vitest --watch false && rimraf dist && tsc && node copyPackageFiles.js",
-    "dryrun": "npm run build && npm pub ./dist/ --dry-run"
+    "build": "pnpm test -- --watch false && tsup"
   },
   "keywords": [
     "zod",
@@ -42,12 +46,12 @@
     "ajv-formats": "^2.1.1",
     "json-schema-deref-sync": "^0.14.0",
     "rimraf": "^3.0.2",
+    "tsup": "^6.6.0",
     "typescript": "^4.9.4",
-    "vitest": "^0.28.4"
+    "vitest": "^0.28.4",
+    "zod": "^3.20.6"
   },
-  "types": "index.d.ts",
   "publishConfig": {
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   }
 }
