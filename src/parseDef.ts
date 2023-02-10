@@ -1,4 +1,4 @@
-import { z } from "@deboxsoft/module-core";
+import { zod, type z } from "@deboxsoft/module-core";
 import { JsonSchema7AnyType, parseAnyDef } from "./parsers/any";
 import { JsonSchema7ArrayType, parseArrayDef } from "./parsers/array";
 import { JsonSchema7BigintType, parseBigintDef } from "./parsers/bigint";
@@ -148,71 +148,71 @@ const selectParser = (
   refs: Refs
 ): JsonSchema7Type | undefined => {
   switch (typeName) {
-    case z.ZodFirstPartyTypeKind.ZodString:
+    case zod.ZodFirstPartyTypeKind.ZodString:
       return parseStringDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodNumber:
+    case zod.ZodFirstPartyTypeKind.ZodNumber:
       return parseNumberDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodObject:
+    case zod.ZodFirstPartyTypeKind.ZodObject:
       return parseObjectDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodBigInt:
+    case zod.ZodFirstPartyTypeKind.ZodBigInt:
       return parseBigintDef();
-    case z.ZodFirstPartyTypeKind.ZodBoolean:
+    case zod.ZodFirstPartyTypeKind.ZodBoolean:
       return parseBooleanDef();
-    case z.ZodFirstPartyTypeKind.ZodDate:
+    case zod.ZodFirstPartyTypeKind.ZodDate:
       return parseDateDef();
-    case z.ZodFirstPartyTypeKind.ZodUndefined:
+    case zod.ZodFirstPartyTypeKind.ZodUndefined:
       return parseUndefinedDef();
-    case z.ZodFirstPartyTypeKind.ZodNull:
+    case zod.ZodFirstPartyTypeKind.ZodNull:
       return parseNullDef(refs);
-    case z.ZodFirstPartyTypeKind.ZodArray:
+    case zod.ZodFirstPartyTypeKind.ZodArray:
       return parseArrayDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodUnion:
-    case z.ZodFirstPartyTypeKind.ZodDiscriminatedUnion:
+    case zod.ZodFirstPartyTypeKind.ZodUnion:
+    case zod.ZodFirstPartyTypeKind.ZodDiscriminatedUnion:
       return parseUnionDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodIntersection:
+    case zod.ZodFirstPartyTypeKind.ZodIntersection:
       return parseIntersectionDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodTuple:
+    case zod.ZodFirstPartyTypeKind.ZodTuple:
       return parseTupleDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodRecord:
+    case zod.ZodFirstPartyTypeKind.ZodRecord:
       return parseRecordDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodLiteral:
+    case zod.ZodFirstPartyTypeKind.ZodLiteral:
       return parseLiteralDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodEnum:
+    case zod.ZodFirstPartyTypeKind.ZodEnum:
       return parseEnumDef(def);
-    case z.ZodFirstPartyTypeKind.ZodNativeEnum:
+    case zod.ZodFirstPartyTypeKind.ZodNativeEnum:
       return parseNativeEnumDef(def);
-    case z.ZodFirstPartyTypeKind.ZodNullable:
+    case zod.ZodFirstPartyTypeKind.ZodNullable:
       return parseNullableDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodOptional:
+    case zod.ZodFirstPartyTypeKind.ZodOptional:
       return parseOptionalDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodMap:
+    case zod.ZodFirstPartyTypeKind.ZodMap:
       return parseMapDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodSet:
+    case zod.ZodFirstPartyTypeKind.ZodSet:
       return parseSetDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodLazy:
+    case zod.ZodFirstPartyTypeKind.ZodLazy:
       return parseDef(def.getter()._def, refs);
-    case z.ZodFirstPartyTypeKind.ZodPromise:
+    case zod.ZodFirstPartyTypeKind.ZodPromise:
       return parsePromiseDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodNaN:
-    case z.ZodFirstPartyTypeKind.ZodNever:
+    case zod.ZodFirstPartyTypeKind.ZodNaN:
+    case zod.ZodFirstPartyTypeKind.ZodNever:
       return parseNeverDef();
-    case z.ZodFirstPartyTypeKind.ZodEffects:
+    case zod.ZodFirstPartyTypeKind.ZodEffects:
       return parseEffectsDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodAny:
+    case zod.ZodFirstPartyTypeKind.ZodAny:
       return parseAnyDef();
-    case z.ZodFirstPartyTypeKind.ZodUnknown:
+    case zod.ZodFirstPartyTypeKind.ZodUnknown:
       return parseUnknownDef();
-    case z.ZodFirstPartyTypeKind.ZodDefault:
+    case zod.ZodFirstPartyTypeKind.ZodDefault:
       return parseDefaultDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodBranded:
+    case zod.ZodFirstPartyTypeKind.ZodBranded:
       return parseBrandedDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodCatch:
+    case zod.ZodFirstPartyTypeKind.ZodCatch:
       return parseCatchDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodPipeline:
+    case zod.ZodFirstPartyTypeKind.ZodPipeline:
       return parsePipelineDef(def, refs);
-    case z.ZodFirstPartyTypeKind.ZodFunction:
-    case z.ZodFirstPartyTypeKind.ZodVoid:
-    case z.ZodFirstPartyTypeKind.ZodSymbol:
+    case zod.ZodFirstPartyTypeKind.ZodFunction:
+    case zod.ZodFirstPartyTypeKind.ZodVoid:
+    case zod.ZodFirstPartyTypeKind.ZodSymbol:
       return undefined;
     default:
       return ((_: never) => undefined)(typeName);

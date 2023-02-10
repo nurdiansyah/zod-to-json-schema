@@ -119,7 +119,7 @@ export function parseStringDef(
           );
           break;
         default:
-          ((_: never) => {})(check);
+          ((_: any) => {})(check);
       }
     }
   }

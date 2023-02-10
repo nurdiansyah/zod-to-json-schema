@@ -325,7 +325,7 @@ describe("Pathing", () => {
   });
 
   it("When opting out of ref building and using recursive schemas, should warn and default to any", () => {
-    global.console = { ...global.console, warn: jest.fn() };
+    global.console = { ...global.console, warn: vi.fn() };
 
     type Category = {
       name: string;

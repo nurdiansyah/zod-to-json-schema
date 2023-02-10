@@ -1,4 +1,4 @@
-import { ZodTypeDef } from "@deboxsoft/module-core";
+import { z } from "@deboxsoft/module-core";
 import { getDefaultOptions, Options } from "./Options";
 import { JsonSchema7Type } from "./parseDef";
 
@@ -9,7 +9,7 @@ export type Refs = {
 } & Options<"jsonSchema7" | "openApi3">;
 
 export type Seen = {
-  def: ZodTypeDef;
+  def: z.ZodTypeDef;
   path: string[];
   jsonSchema: JsonSchema7Type | undefined;
 };
