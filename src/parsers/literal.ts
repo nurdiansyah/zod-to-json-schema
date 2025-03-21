@@ -1,5 +1,5 @@
 import { z } from "@deboxsoft/module-core";
-import { Refs } from "../Refs";
+import { Refs } from "../Refs.js";
 
 export type JsonSchema7LiteralType =
   | {
@@ -12,7 +12,7 @@ export type JsonSchema7LiteralType =
 
 export function parseLiteralDef(
   def: z.ZodLiteralDef,
-  refs: Refs
+  refs: Refs,
 ): JsonSchema7LiteralType {
   const parsedType = typeof def.value;
   if (

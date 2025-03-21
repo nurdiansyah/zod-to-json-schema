@@ -1,10 +1,11 @@
 import { z } from "@deboxsoft/module-core";
-import { JsonSchema7Type, parseDef } from "../parseDef";
-import { Refs } from "../Refs";
+import { parseDef } from "../parseDef.js";
+import { JsonSchema7Type } from "../parseTypes.js";
+import { Refs } from "../Refs.js";
 
 export const parseOptionalDef = (
   def: z.ZodOptionalDef,
-  refs: Refs
+  refs: Refs,
 ): JsonSchema7Type | undefined => {
   if (refs.currentPath.toString() === refs.propertyPath?.toString()) {
     return parseDef(def.innerType._def, refs);
@@ -17,12 +18,12 @@ export const parseOptionalDef = (
 
   return innerSchema
     ? {
-      anyOf: [
-        {
-          not: {},
-        },
-        innerSchema,
-      ],
-    }
+        anyOf: [
+          {
+            not: {},
+          },
+          innerSchema,
+        ],
+      }
     : {};
 };

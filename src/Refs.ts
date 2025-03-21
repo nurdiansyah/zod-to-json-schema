@@ -1,12 +1,12 @@
 import { z } from "@deboxsoft/module-core";
-import { getDefaultOptions, Options } from "./Options";
-import { JsonSchema7Type } from "./parseDef";
+import { getDefaultOptions, Options, Targets } from "./Options.js";
+import { JsonSchema7Type } from "./parseTypes.js";
 
 export type Refs = {
-  seen: Seen[];
+  seen: Map<z.ZodTypeDef, Seen>;
   currentPath: string[];
   propertyPath: string[] | undefined;
-} & Options<"jsonSchema7" | "openApi3">;
+} & Options<Targets>;
 
 export type Seen = {
   def: z.ZodTypeDef;
@@ -14,9 +14,7 @@ export type Seen = {
   jsonSchema: JsonSchema7Type | undefined;
 };
 
-export const getRefs = (
-  options?: string | Partial<Options<"jsonSchema7" | "openApi3">>
-): Refs => {
+export const getRefs = (options?: string | Partial<Options<Targets>>): Refs => {
   const _options = getDefaultOptions(options);
   const currentPath =
     _options.name !== undefined
@@ -26,6 +24,16 @@ export const getRefs = (
     ..._options,
     currentPath: currentPath,
     propertyPath: undefined,
-    seen: [],
+    seen: new Map(
+      Object.entries(_options.definitions).map(([name, def]) => [
+        def._def,
+        {
+          def: def._def,
+          path: [..._options.basePath, _options.definitionPath, name],
+          // Resolution of references will be forced even though seen, so it's ok that the schema is undefined here for now.
+          jsonSchema: undefined,
+        },
+      ]),
+    ),
   };
 };

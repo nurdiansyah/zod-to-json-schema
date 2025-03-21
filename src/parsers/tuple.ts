@@ -1,6 +1,7 @@
 import { z } from "@deboxsoft/module-core";
-import { JsonSchema7Type, parseDef } from "../parseDef";
-import { Refs } from "../Refs";
+import { parseDef } from "../parseDef.js";
+import { JsonSchema7Type } from "../parseTypes.js";
+import { Refs } from "../Refs.js";
 
 export type JsonSchema7TupleType = {
   type: "array";
@@ -17,7 +18,7 @@ export type JsonSchema7TupleType = {
 
 export function parseTupleDef(
   def: z.ZodTupleDef<z.ZodTupleItems | [], z.ZodTypeAny | null>,
-  refs: Refs
+  refs: Refs,
 ): JsonSchema7TupleType {
   if (def.rest) {
     return {
@@ -28,11 +29,11 @@ export function parseTupleDef(
           parseDef(x._def, {
             ...refs,
             currentPath: [...refs.currentPath, "items", `${i}`],
-          })
+          }),
         )
         .reduce(
           (acc: JsonSchema7Type[], x) => (x === undefined ? acc : [...acc, x]),
-          []
+          [],
         ),
       additionalItems: parseDef(def.rest._def, {
         ...refs,
@@ -49,11 +50,11 @@ export function parseTupleDef(
           parseDef(x._def, {
             ...refs,
             currentPath: [...refs.currentPath, "items", `${i}`],
-          })
+          }),
         )
         .reduce(
           (acc: JsonSchema7Type[], x) => (x === undefined ? acc : [...acc, x]),
-          []
+          [],
         ),
     };
   }

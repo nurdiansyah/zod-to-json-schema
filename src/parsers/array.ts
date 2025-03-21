@@ -1,7 +1,8 @@
 import { z } from "@deboxsoft/module-core";
-import { ErrorMessages, setResponseValueAndErrors } from "../errorMessages";
-import { JsonSchema7Type, parseDef } from "../parseDef";
-import { Refs } from "../Refs";
+import { ErrorMessages, setResponseValueAndErrors } from "../errorMessages.js";
+import { parseDef } from "../parseDef.js";
+import { Refs } from "../Refs.js";
+import { JsonSchema7Type } from "../parseTypes.js";
 
 export type JsonSchema7ArrayType = {
   type: "array";

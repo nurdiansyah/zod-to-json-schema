@@ -1,10 +1,12 @@
 import { z } from "@deboxsoft/module-core";
-import { ErrorMessages, setResponseValueAndErrors } from "../errorMessages";
-import { JsonSchema7Type, parseDef } from "../parseDef";
-import { Refs } from "../Refs";
+import { ErrorMessages, setResponseValueAndErrors } from "../errorMessages.js";
+import { parseDef } from "../parseDef.js";
+import { JsonSchema7Type } from "../parseTypes.js";
+import { Refs } from "../Refs.js";
 
 export type JsonSchema7SetType = {
   type: "array";
+  uniqueItems: true;
   items?: JsonSchema7Type;
   minItems?: number;
   maxItems?: number;
@@ -19,6 +21,7 @@ export function parseSetDef(def: z.ZodSetDef, refs: Refs): JsonSchema7SetType {
 
   const schema: JsonSchema7SetType = {
     type: "array",
+    uniqueItems: true,
     items,
   };
 
@@ -28,7 +31,7 @@ export function parseSetDef(def: z.ZodSetDef, refs: Refs): JsonSchema7SetType {
       "minItems",
       def.minSize.value,
       def.minSize.message,
-      refs
+      refs,
     );
   }
 
@@ -38,7 +41,7 @@ export function parseSetDef(def: z.ZodSetDef, refs: Refs): JsonSchema7SetType {
       "maxItems",
       def.maxSize.value,
       def.maxSize.message,
-      refs
+      refs,
     );
   }
 
